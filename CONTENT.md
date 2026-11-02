@@ -1,6 +1,6 @@
 # 内容更新指南
 
-本站所有内容都是**纯静态文件**，不需要数据库。改完文件后重新构建即可发布。
+本站所有内容都是**纯静态文件**，不需要数据库。
 
 | 内容 | 位置 | 说明 |
 |---|---|---|
@@ -11,13 +11,24 @@
 
 图片统一放 `public/images/` 下（文章图 `blog/`、作品图 `works/`），frontmatter 里用 `/images/...` 绝对路径引用。
 
-## 发布流程
+## 发布流程（GitHub Pages 自动部署）
+
+线上地址：**https://jethrozz.github.io/**
 
 ```bash
-npm run build   # 构建并导出到 out/，内容变更会自动生成页面/分类/统计
+# 1. 改完内容后，提交并推送
+git add -A
+git commit -m "新文章：xxx"     # 备注随意，写清楚改了什么即可
+git push
+
+# 2. 等待 1~2 分钟自动构建上线（无需任何手动操作）
 ```
 
-> ⚠️ `npm run dev` 模式下新增/修改 md 文件**不会自动热更新**（内容在构建期读取并缓存）。dev 下改了内容请重启 dev server，或直接用 `npm run build && npx serve out` 验证。
+- 推送后 GitHub Actions 自动 `npm run build` 并发布，进度可在仓库 Actions 页查看
+- 本地想先预览再推：`npm run build && npx serve out`（out/ 目录就是最终站点）
+
+> ⚠️ `npm run dev` 模式下新增/修改 md 文件**不会自动热更新**（内容在构建期读取并缓存）。dev 下改了内容请重启 dev server，或直接用上面的 build + serve 验证。
+> ⚠️ dev 运行期间**不要执行 `npm run build`**（共用 .next 目录会互相损坏缓存，导致页面样式错乱；如遇此情况：停掉 dev → 删 .next → 重启）。
 
 ---
 
