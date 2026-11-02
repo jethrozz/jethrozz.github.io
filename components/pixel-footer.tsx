@@ -28,11 +28,11 @@ export function PixelFooter() {
               <rect x="7" y="20" width="10" height="2" fill="currentColor" />
               <rect x="6" y="7" width="2" height="2" fill="currentColor" />
             </svg>
-            <span className="text-lg font-bold">PixelPortfolio</span>
+            <span className="text-lg font-bold">Jz&apos;s Blog</span>
           </Link>
           <span className="hidden md:inline text-zinc-400">|</span>
           <p className="text-md text-muted-foreground">
-            © {currentYear} PixelPortfolio. All rights reserved.
+            © {currentYear} Jz&apos;s Blog · 保留所有权利
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export function PixelFooter() {
             ))}
           </div>
           <p className="text-sm text-muted-foreground font-pixel">
-            Crafted with burger and pixel love
+            用像素与热爱拼成
           </p>
         </div>
 

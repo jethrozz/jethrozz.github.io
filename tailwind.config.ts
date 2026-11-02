@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'pixel': ['"VT323"', 'monospace'],
-        'pixelHeading': ['"Press Start 2P"', 'monospace'],
+        'pixel': ['"Zpix"', 'monospace'],
+        'pixelHeading': ['"Zpix"', 'monospace'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

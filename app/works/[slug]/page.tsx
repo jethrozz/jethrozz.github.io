@@ -1,29 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { PixelSeparator } from "@/components/pixel-separator";
-import { ArrowLeftIcon, ExternalLinkIcon } from "lucide-react";
+import { MarkdownContent } from "@/components/markdown-renderer";
+import { ArrowLeftIcon, Calendar, ExternalLinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import { works } from "@/lib/data";
+import { findWork, getWorks } from "@/lib/content";
+import { formatDate } from "@/lib/grouping";
 
 export function generateStaticParams() {
-  return Object.keys(works).map((slug) => ({
-    slug,
+  return getWorks().map((work) => ({
+    slug: work.slug,
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const work = findWork(params.slug);
+  if (!work) return {};
+  return {
+    title: work.title,
+    description: work.description,
+  };
+}
+
 export default function WorksPost({ params }: { params: { slug: string } }) {
-  const work = works[params.slug as keyof typeof works];
+  const work = findWork(params.slug as string);
 
   if (!work) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4">项目不存在</h1>
           <Button asChild variant="outline" className="pixel-button">
             <Link href="/works">
               <ArrowLeftIcon className="mr-2 h-5 w-5" />
-              Back to Works
+              返回作品列表
             </Link>
           </Button>
         </div>
@@ -38,18 +54,22 @@ export default function WorksPost({ params }: { params: { slug: string } }) {
           <Button asChild variant="outline" className="pixel-button mb-8">
             <Link href="/works" className="flex items-center">
               <ArrowLeftIcon className="mr-2 h-5 w-5" />
-              Back to Works
+              返回作品列表
             </Link>
           </Button>
 
           <div>
-            <h1 className="text-4xl font-bold mb-6">{work.title}</h1>
-            
-            <div className="flex flex-wrap gap-2 mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6">{work.title}</h1>
+
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-8">
+              <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                <Calendar size={16} />
+                {formatDate(work.date)}
+              </span>
               {work.tags.map((tag) => (
-                <span 
+                <span
                   key={tag}
-                  className="bg-primary text-foreground px-3 py-1 text-sm font-medium border-2 border-foreground"
+                  className="bg-primary text-black px-3 py-1 text-sm font-medium border-2 border-foreground"
                 >
                   {tag}
                 </span>
@@ -71,20 +91,14 @@ export default function WorksPost({ params }: { params: { slug: string } }) {
 
             <PixelSeparator />
 
-            <div className="prose prose-lg dark:prose-invert mt-8 space-y-6">
-              {work.content.split("\n\n").map((paragraph, index) => (
-                <p key={index} className="text-lg leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            <MarkdownContent content={work.content} />
 
             <PixelSeparator />
 
             <div className="mt-8 text-center">
               <Button asChild className="pixel-button text-lg py-6">
                 <a href={work.link} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  Visit Project
+                  访问项目
                   <ExternalLinkIcon className="ml-2 h-5 w-5" />
                 </a>
               </Button>

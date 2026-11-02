@@ -23,25 +23,25 @@ export function PixelHero() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="px-4 py-2 bg-primary border-2 border-black inline-block"
             >
-              <p className="text-black font-bold">Welcome to my pixel world</p>
+              <p className="text-black font-bold">后端 · 全栈 · Agent 工程师</p>
             </motion.div>
-            
+
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold"
             >
-              Crafting <span className="text-primary">Pixel-Perfect</span> Digital Experiences
+              从后端到<span className="text-primary"> Agent</span>，造自己的产品
             </motion.h1>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.5 }}
               className="text-xl md:text-2xl"
             >
-              I design and build creative websites with pixel art aesthetics, bringing a unique retro feeling to modern web experiences.
+              8 年后端开发经验，擅长大型系统的设计与开发；业余时间做独立产品、探索 Agent，未来想做游戏。
             </motion.p>
           </div>
           
@@ -53,14 +53,14 @@ export function PixelHero() {
           >
             <Button asChild className="pixel-button text-lg py-6 rounded-none">
               <Link href="/works">
-                View My Work
+                看看我的作品
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            
+
             <Button asChild variant="outline" className="pixel-button bg-white text-lg py-6 rounded-none">
               <Link href="/blog">
-                Read My Blog
+                阅读我的博客
               </Link>
             </Button>
           </motion.div>
@@ -77,7 +77,7 @@ export function PixelHero() {
             <div className="absolute inset-0 pixel-card overflow-hidden">
               <Image
                 src="/images/hero.webp"
-                alt="Pixel Art Portfolio"
+                alt="像素作品集"
                 fill
                 className="object-cover"
                 style={{ imageRendering: "pixelated" }}
@@ -90,7 +90,7 @@ export function PixelHero() {
               className="absolute -bottom-6 -left-6 z-10"
             >
               <div className="bg-white dark:bg-background dark:text-foreground border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <p className="text-lg font-bold">5+ Years Experience</p>
+                <p className="text-lg font-bold">8 年后端经验</p>
               </div>
             </motion.div>
             <motion.div
@@ -100,7 +100,7 @@ export function PixelHero() {
               className="absolute -top-6 -right-6 z-10"
             >
               <div className="bg-accent border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <p className="text-lg font-bold text-white">20+ Projects</p>
+                <p className="text-lg font-bold text-white">Sui Overflow 前 100</p>
               </div>
             </motion.div>
           </div>

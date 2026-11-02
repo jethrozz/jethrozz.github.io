@@ -3,14 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { HomeIcon, FileTextIcon, BriefcaseIcon, UserIcon } from "lucide-react";
+import {
+  HomeIcon,
+  FileTextIcon,
+  LightbulbIcon,
+  BriefcaseIcon,
+  UserIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { path: "/", name: "Home", icon: <HomeIcon size={20} /> },
-  { path: "/blog", name: "Blog", icon: <FileTextIcon size={20} /> },
-  { path: "/works", name: "Works", icon: <BriefcaseIcon size={20} /> },
-  { path: "/about", name: "About", icon: <UserIcon size={20} /> },
+  { path: "/", name: "首页", icon: <HomeIcon size={20} /> },
+  { path: "/blog", name: "文章", icon: <FileTextIcon size={20} /> },
+  { path: "/thoughts", name: "随想", icon: <LightbulbIcon size={20} /> },
+  { path: "/works", name: "作品", icon: <BriefcaseIcon size={20} /> },
+  { path: "/about", name: "简历", icon: <UserIcon size={20} /> },
 ];
 
 const variants = {

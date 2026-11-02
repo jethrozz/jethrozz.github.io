@@ -8,10 +8,10 @@ import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import { blogPosts, works } from "@/lib/data";
+import { getPosts, getWorks } from "@/lib/content";
 
-const featuredPosts = Object.values(blogPosts).slice(0, 3);
-const featuredWorks = Object.values(works).slice(0, 2);
+const featuredPosts = getPosts().slice(0, 3);
+const featuredWorks = getWorks().slice(0, 2);
 
 export default function Home() {
   return (
@@ -31,10 +31,10 @@ export default function Home() {
       {/* Featured Works Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Featured Works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">精选作品</h2>
           <Button asChild variant="outline" className="pixel-button">
             <Link href="/works" className="flex items-center">
-              View All
+              查看全部
               <ArrowRightIcon className="ml-2 h-5 w-5" />
             </Link>
           </Button>
@@ -60,10 +60,10 @@ export default function Home() {
       {/* Blog Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Latest Articles</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">最新文章</h2>
           <Button asChild variant="outline" className="pixel-button">
             <Link href="/blog" className="flex items-center">
-              Read All
+              阅读全部
               <ArrowRightIcon className="ml-2 h-5 w-5" />
             </Link>
           </Button>

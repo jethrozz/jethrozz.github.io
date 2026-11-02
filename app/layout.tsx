@@ -14,8 +14,8 @@ const CustomCursor = dynamic(() => import('@/components/custom-cursor'), {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pixel Portfolio - Creative Developer",
-  description: "A pixel art portfolio and blog showcasing creative digital work",
+  title: "Jz's Blog",
+  description: "Jethrozz 的像素风个人站：后端 & Agent 工程师、独立开发爱好者的文章、随想与作品。",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
           <CustomCursor />

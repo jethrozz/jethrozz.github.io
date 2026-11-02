@@ -30,7 +30,7 @@ export function WorksCard({ title, description, slug, imageUrl, tags, index = 0 
             href={`/works/${slug}`}
             className="bg-primary text-black font-bold px-6 py-3 border-2 border-black flex items-center transition-transform duration-200 translate-y-4 group-hover:translate-y-0"
           >
-            View Project <ExternalLinkIcon className="ml-2 h-4 w-4" />
+            查看项目 <ExternalLinkIcon className="ml-2 h-4 w-4" />
           </Link>
         </div>
       </div>

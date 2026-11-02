@@ -2,19 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 站点像素字体：Zpix（最像素），覆盖中文与拉丁字符 */
 @font-face {
-  font-family: 'VT323';
+  font-family: 'Zpix';
   font-style: normal;
   font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJU.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Press Start 2P';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2') format('woff2');
+  src: url('/fonts/zpix.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -73,20 +66,21 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-pixel;
+    @apply bg-background text-foreground;
+    font-family: 'Zpix', monospace;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Press Start 2P', monospace;
-    letter-spacing: 0.05em;
+    font-family: 'Zpix', monospace;
+    letter-spacing: 0.02em;
     line-height: 1.6;
   }
 
   p, span, a, button, input, textarea {
-    font-family: 'VT323', monospace;
+    font-family: 'Zpix', monospace;
     font-size: 1.125rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     line-height: 1.6;
   }
 }
@@ -260,4 +254,71 @@
 .pixel-card-animate {
   opacity: 0;
   animation: pixelCardFadeIn 0.3s steps(8) forwards;
+}
+
+/* Pixel Badge —— 年月归档的数量统计徽标 */
+.pixel-badge {
+  @apply inline-flex items-center bg-primary text-black text-xs font-bold leading-none px-2 py-1 whitespace-nowrap;
+  border: 2px solid hsl(var(--foreground));
+  box-shadow: 2px 2px 0 0 hsl(var(--foreground) / 0.8);
+}
+
+/* ---- Markdown 正文（react-markdown 输出）的像素风扩展 ---- */
+
+.prose :not(pre) > code {
+  @apply bg-secondary px-1.5 py-0.5 text-[0.95em];
+  border: 1px solid hsl(var(--foreground));
+}
+
+.prose pre {
+  @apply bg-foreground text-background p-4 my-6 overflow-x-auto border-4;
+  border-color: hsl(var(--foreground));
+  box-shadow: 6px 6px 0 0 hsl(var(--foreground) / 0.5);
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-[0.9em];
+  border: none;
+}
+
+.prose blockquote {
+  @apply border-l-8 pl-4 pr-2 py-1 my-6 italic text-muted-foreground;
+  border-color: hsl(var(--primary));
+  background: hsl(var(--muted) / 0.5);
+}
+
+.prose table {
+  @apply w-full my-6 border-collapse;
+}
+
+.prose th,
+.prose td {
+  @apply px-3 py-2 text-left;
+  border: 2px solid hsl(var(--foreground));
+}
+
+.prose th {
+  @apply bg-secondary font-bold;
+}
+
+.prose img {
+  max-width: 100%;
+  image-rendering: pixelated;
+}
+
+.prose hr {
+  width: 60%;
+  margin: 2rem auto;
+  border: none;
+  border-top: 4px solid hsl(var(--foreground) / 0.25);
+}
+
+.prose h2:not(:first-child) {
+  margin-top: 2.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 4px solid hsl(var(--foreground) / 0.12);
+}
+
+.prose h3:not(:first-child) {
+  margin-top: 1.75rem;
 }

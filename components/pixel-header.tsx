@@ -47,8 +47,8 @@ export function PixelHeader() {
               </svg>
             </motion.div>
             <h1 className="text-xl md:text-2xl font-pixel tracking-tight">
-              <span className="text-primary font-bold">Pixel</span>
-              <span className="text-black dark:text-white">Portfolio</span>
+              <span className="text-primary font-bold">Jz&apos;s</span>
+              <span className="text-black dark:text-white"> Blog</span>
             </h1>
           </Link>
         </motion.div>
